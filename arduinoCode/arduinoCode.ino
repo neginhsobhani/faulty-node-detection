@@ -9,6 +9,7 @@
 const unsigned long postingInterval = 15L * 1000L;
 long lastUpdateTime = 0;
 int intervalCounter = 0;
+
 //Initialise Arduino to NodeMCU (5=Rx & 6=Tx)
 SoftwareSerial nodemcu(5, 6);
 //SoftwareSerial espSerial(5, 6);
@@ -23,6 +24,8 @@ float sumSensor0;
 float sumSensor1;
 float sumSensor2;
 
+//-------------------------------------------------- SETUP ------------------------------------------------------------
+
 void setup() {
   Serial.begin(9600);
 
@@ -31,17 +34,22 @@ void setup() {
 
   Serial.println("Program started");
 }
+
+//-------------------------------------------------- LOOP ------------------------------------------------------------
+
 void loop()
 {
   //Obtain Tempreture from 3 sensors
   lm35_func();
   intervalCounter ++; 
+  // printing some stuff for debugging - remove later
   Serial.println(intervalCounter);
   long now = millis() - lastUpdateTime;
   Serial.println(millis());
   Serial.println(lastUpdateTime);
   Serial.println(postingInterval);
   Serial.println(now);
+  
   if (millis() - lastUpdateTime >=  postingInterval) {
     lastUpdateTime = millis();
     Serial.print("reached post interval!");
@@ -75,7 +83,7 @@ void loop()
     intervalCounter = 0;
     }
 }
-
+//----------------------------------------- FUNCTION - LM35 sensor reading -----------------------------------------
 void lm35_func() {
   int reading0 = analogRead(sensorPin0);
   float voltage0 = reading0 * (5.0 / 1024.0);
