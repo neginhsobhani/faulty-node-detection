@@ -43,7 +43,13 @@ void setup() {
 //-------------------------------------------------- LOOP ------------------------------------------------------------
 
 void loop() {
-
+  //Check if connected to WiFi, else connect
+  if (WiFi.status() != WL_CONNECTED) {
+    wifi_connect();
+  }
+  else {
+    Serial.println("Currently Connected to WiFi");
+  }
   StaticJsonBuffer<1000> jsonBuffer;
   JsonObject& data = jsonBuffer.parseObject(nodemcu);
 
@@ -68,6 +74,8 @@ void loop() {
   Serial.println(temp_sensor2);
   Serial.println("-----------------------------------------");
 
+  int x = write2TSData( channelID , dataFieldOne , temp_sensor0 , dataFieldTwo , temp_sensor1 , dataFieldThree , temp_sensor2);
+  Serial.println(x);
 }
 
 //----------------------------------------- FUNCTION - WiFi Connect -----------------------------------------
@@ -91,7 +99,7 @@ void wifi_connect() {
 //----------------------------------------- FUNCTION - Write Data to ThingSpeak -----------------------------------------
 // Use this function if you want to write multiple fields simultaneously.
 
-int write2TSData( long TSChannel, unsigned int TSField1, float field1Data, unsigned int TSField2, long field2Data, unsigned int TSField3, long field3Data ){
+int write2TSData( long TSChannel, unsigned int TSField1, float field1Data, unsigned int TSField2, long field2Data, unsigned int TSField3, long field3Data ) {
 
   ThingSpeak.setField( TSField1, field1Data );
   ThingSpeak.setField( TSField2, field2Data );
