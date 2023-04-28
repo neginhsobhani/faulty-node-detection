@@ -7,6 +7,7 @@
 #define sensorPin1 A1
 #define sensorPin2 A2
 
+// sending data to esp
 const unsigned long postingInterval = 15L * 1000L;
 long lastUpdateTime = 0;
 int intervalCounter = 0;
@@ -14,6 +15,7 @@ int intervalCounter = 0;
 //Initialise Arduino to NodeMCU (5=Rx & 6=Tx)
 SoftwareSerial nodemcu(5, 6);
 //SoftwareSerial espSerial(5, 6);
+
 
 // Temperature read from sensor each second
 float temp_sensor0;
@@ -43,13 +45,6 @@ void loop()
   //Obtain Tempreture from 3 sensors
   lm35_func();
   intervalCounter ++; 
-  // printing some stuff for debugging - remove later
-  Serial.println(intervalCounter);
-  long now = millis() - lastUpdateTime;
-  Serial.println(millis());
-  Serial.println(lastUpdateTime);
-  Serial.println(postingInterval);
-  Serial.println(now);
   
   if (millis() - lastUpdateTime >=  postingInterval) {
     lastUpdateTime = millis();
