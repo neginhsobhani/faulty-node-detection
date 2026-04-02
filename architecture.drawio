@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Faulty Node Detection Architecture" id="Y2EAQ1-JdrfnJsTlmHgh">
+    <mxGraphModel dx="1348" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-1" parent="1" style="swimlane;horizontal=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="IoT Layer" vertex="1">
+          <mxGeometry height="200" width="220" x="130" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-2" parent="Lz03rAtp7y49Yx3uf7lk-1" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="Temperature Sensor" vertex="1">
+          <mxGeometry height="40" width="180" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-3" parent="Lz03rAtp7y49Yx3uf7lk-1" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="Arduino / ESP (Data Collection + WiFi)" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-4" parent="1" style="swimlane;horizontal=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Cloud Layer (ThingSpeak)" vertex="1">
+          <mxGeometry height="200" width="240" x="390" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-5" parent="Lz03rAtp7y49Yx3uf7lk-4" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="Data Storage + Streaming" vertex="1">
+          <mxGeometry height="60" width="200" x="20" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-6" parent="1" style="swimlane;horizontal=1;fillColor=#f8cecc;strokeColor=#b85450;" value="ML Layer" vertex="1">
+          <mxGeometry height="200" width="260" x="670" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-7" parent="Lz03rAtp7y49Yx3uf7lk-6" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="Data Preprocessing" vertex="1">
+          <mxGeometry height="40" width="220" x="20" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-8" parent="Lz03rAtp7y49Yx3uf7lk-6" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="ANN Model (TensorFlow/Keras)" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-9" parent="Lz03rAtp7y49Yx3uf7lk-6" style="rounded=1;whiteSpace=wrap;fillColor=#ffffff;" value="Output: Normal / Faulty" vertex="1">
+          <mxGeometry height="40" width="220" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-10" edge="1" parent="1" source="Lz03rAtp7y49Yx3uf7lk-2" style="endArrow=block;" target="Lz03rAtp7y49Yx3uf7lk-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-11" edge="1" parent="1" source="Lz03rAtp7y49Yx3uf7lk-3" style="endArrow=block;" target="Lz03rAtp7y49Yx3uf7lk-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-12" edge="1" parent="1" source="Lz03rAtp7y49Yx3uf7lk-5" style="endArrow=block;" target="Lz03rAtp7y49Yx3uf7lk-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-13" edge="1" parent="1" source="Lz03rAtp7y49Yx3uf7lk-7" style="endArrow=block;" target="Lz03rAtp7y49Yx3uf7lk-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lz03rAtp7y49Yx3uf7lk-14" edge="1" parent="1" source="Lz03rAtp7y49Yx3uf7lk-8" style="endArrow=block;" target="Lz03rAtp7y49Yx3uf7lk-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
