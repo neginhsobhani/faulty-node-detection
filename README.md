@@ -32,11 +32,9 @@ This project addresses the problem by:
 
 ## System Architecture
 
-
-
-Temperature Sensor → Arduino / ESP → ThingSpeak Cloud → ML Model → Fault Detection
-
-
+<p align="center">
+  <img src="architecture.drawio.svg" width="700"/>
+</p>
 
 ---
 
